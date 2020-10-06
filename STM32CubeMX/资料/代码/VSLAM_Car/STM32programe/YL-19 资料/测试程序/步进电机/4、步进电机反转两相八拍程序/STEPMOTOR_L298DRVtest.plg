@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\工作\制版成功\YL-19 步进电机（ln298）\YL-19 资料\测试程序\步进电机\4、步进电机反转两相八拍程序\STEPMOTOR_L298DRVtest.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling STEPMOTOR_L298DRVtest.c...
+linking...
+Program Size: data=20.0 xdata=0 code=506
+creating hex file from "STEPMOTOR_L298DRVtest"...
+"STEPMOTOR_L298DRVtest" - 0 Error(s), 0 Warning(s).

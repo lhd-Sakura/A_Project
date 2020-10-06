@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\delay.obj",
+".\Objects\main.obj" 
+TO ".\Objects\Serial" 
+PRINT(".\Listings\Serial.m51")

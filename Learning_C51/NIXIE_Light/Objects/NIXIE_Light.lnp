@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\delay.obj",
+".\Objects\main.obj" 
+TO ".\Objects\NIXIE_Light" 
+PRINT(".\Listings\NIXIE_Light.m51")

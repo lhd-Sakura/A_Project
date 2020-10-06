@@ -1,0 +1,122 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              09/07/2019 10:30:20 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include"main.h"
+   3          #include"delay.h"
+   4          
+   5          sbit K1 = P3^2;
+   6          
+   7          uchar code DIS_CODE[12]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF,0x0C};
+   8          
+   9          
+  10          //显示数字
+  11          void disp_num(uchar num)
+  12          {
+  13   1        uchar sep_num;           //个位
+  14   1        uchar ten_num;           //十位
+  15   1        
+  16   1        sep_num = num%10;
+  17   1        ten_num = num/10;
+  18   1        P2 = 0x02;
+  19   1        P0 = DIS_CODE[sep_num];
+  20   1        delay_ms(5);
+  21   1        P2 = 0x01;
+  22   1        P0 = DIS_CODE[ten_num];
+  23   1        delay_ms(5);
+  24   1        
+  25   1      }
+  26          
+  27          
+  28          
+  29          void main()
+  30          {
+  31   1        uchar key_val = 0;
+  32   1        uchar num = 0;
+  33   1        uchar dis_num = 0;
+  34   1        
+  35   1        P0 = 0xFF;
+  36   1        P2 = 0xFF;
+  37   1        P3 = 0xFF;
+  38   1        key_val = 0xFF;
+  39   1        
+  40   1        while(1)
+  41   1        {
+  42   2          if(key_val != P3)                 //判断按键状态的改变，按下和抬起
+  43   2          {
+  44   3            key_val = P3;                 
+  45   3            disp_num(dis_num);
+  46   3            while(K1 == 0)                  //按键按下，一直计时，抬起按键计时结束
+  47   3            {
+  48   4              disp_num(dis_num);
+  49   4              if(++num>100)                 //临时充当计时器
+  50   4              {
+  51   5                num = 101;
+  52   5              }
+  53   4              
+  54   4            }
+C51 COMPILER V9.60.0.0   MAIN                                                              09/07/2019 10:30:20 PAGE 2   
+
+  55   3            
+  56   3            
+  57   3            //根据num处理显示数字
+  58   3            if(num>0 && num<=100)
+  59   3            {
+  60   4              dis_num++;
+  61   4              
+  62   4            } 
+  63   3            else if(num>100)
+  64   3            {
+  65   4              dis_num +=10;
+  66   4              
+  67   4            }
+  68   3            num = 0;
+  69   3              
+  70   3          }
+  71   2          
+  72   2          disp_num(dis_num);
+  73   2          
+  74   2          
+  75   2        
+  76   2        }
+  77   1        
+  78   1        
+  79   1        
+  80   1        
+  81   1        
+  82   1        
+  83   1        
+  84   1        
+  85   1        
+  86   1        
+  87   1        
+  88   1        
+  89   1        
+  90   1        
+  91   1        
+  92   1        
+  93   1        
+  94   1        
+  95   1      }
+  96          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    165    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

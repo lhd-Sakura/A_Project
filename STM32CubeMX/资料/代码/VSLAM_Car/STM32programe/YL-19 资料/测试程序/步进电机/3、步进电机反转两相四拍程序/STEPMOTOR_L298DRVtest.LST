@@ -1,0 +1,83 @@
+C51 COMPILER V9.00   STEPMOTOR_L298DRVTEST                                                 06/05/2012 11:15:30 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE STEPMOTOR_L298DRVTEST
+OBJECT MODULE PLACED IN STEPMOTOR_L298DRVtest.OBJ
+COMPILER INVOKED BY: E:\安装软件\keil-51\C51\BIN\C51.EXE STEPMOTOR_L298DRVtest.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*********************************************************************************************************
+             -****
+   2          *                                                                                               测试说明
+   3          *1、MCU:STC89C52RC
+   4          *2、测试频率:12Mhz
+   5          *2、编程语言:C51
+   6          *2、编译环境:Keil C
+   7          *2、功能:步进电机反转两相四拍程序
+   8          **********************************************************************************************************
+             -***/
+   9          
+  10          #include <reg52.h>
+  11          
+  12          //L298输入控制端定义
+  13          sbit IN1 = P1^0;
+  14          sbit IN2 = P1^1;        
+  15          sbit IN3 = P1^2;        
+  16          sbit IN4 = P1^3;
+  17          sbit ENA = P1^4;        
+  18          sbit ENB = P1^5;
+  19          
+  20          unsigned int CYCLE; //周期变量
+  21          
+  22          unsigned char code B_Rotation[4]={0x36,0x35,0x39,0x3a}; //反转表格 全步方式
+  23          
+  24          
+  25          //如果步进电机是1.8度的 那么走一圈360度，全步方式需要200步 半步方式需要400步 自己可根据步进电机参数来设计
+  26          
+  27          
+  28          /********************************/
+  29          /*      主函数                       */
+  30          /********************************/
+  31          main()
+  32          { 
+  33   1              CYCLE=1000;     //脉冲频率
+  34   1              
+  35   1              TMOD |=0x01;    //定时器设置 1ms in 12M crystal
+  36   1              TH0=(65536-CYCLE)/256; 
+  37   1              TL0=(65536-CYCLE)%256;
+  38   1              IE= 0x82;               //打开中断              
+  39   1              TR0=1;
+  40   1              while(1);  
+  41   1      }
+  42          /********************************/
+  43          /*      定时器0中断服务函数     */
+  44          /********************************/
+  45          void Timer0(void) interrupt 1 using 1
+  46          {
+  47   1              static unsigned char Cnt;
+  48   1      
+  49   1              TH0=(65536-CYCLE)/256; 
+  50   1              TL0=(65536-CYCLE)%256;
+  51   1              
+  52   1              if(Cnt<4)       Cnt++;
+  53   1              else            Cnt=0;
+C51 COMPILER V9.00   STEPMOTOR_L298DRVTEST                                                 06/05/2012 11:15:30 PAGE 2   
+
+  54   1              P1=B_Rotation[Cnt];  //输出对应的相 
+  55   1              
+  56   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    206    ----
+   CONSTANT SIZE    =      4    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

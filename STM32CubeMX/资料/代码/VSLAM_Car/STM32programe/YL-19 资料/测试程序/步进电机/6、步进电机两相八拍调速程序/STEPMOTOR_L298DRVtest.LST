@@ -1,0 +1,105 @@
+C51 COMPILER V7.06   STEPMOTOR_L298DRVTEST                                                 05/01/2011 09:08:04 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE STEPMOTOR_L298DRVTEST
+OBJECT MODULE PLACED IN STEPMOTOR_L298DRVtest.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE STEPMOTOR_L298DRVtest.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*********************************************************************************************************
+             -****
+   2          *                                                                                               测试说明
+   3          *1、MCU:STC89C52RC
+   4          *2、测试频率:12Mhz
+   5          *2、编程语言:C51
+   6          *2、编译环境:Keil C
+   7          *2、功能:步进电机两相八拍调速程序
+   8          **********************************************************************************************************
+             -***/
+   9          
+  10          #include <reg52.h>
+  11          
+  12          //L298输入控制端定义
+  13          sbit IN1 = P1^0;
+  14          sbit IN2 = P1^1;        
+  15          sbit IN3 = P1^2;        
+  16          sbit IN4 = P1^3;
+  17          sbit ENA = P1^4;        
+  18          sbit ENB = P1^5;
+  19          
+  20          sbit ADJ = P3^3;        //调速运行按键
+  21          
+  22          unsigned int CYCLE; //周期变量
+  23          
+  24          unsigned char code F_Rotation[8]={0x3a,0x28,0x39,0x11,0x35,0x24,0x36,0x12};     //正转表格 半步方式
+  25          
+  26          //如果步进电机是1.8度的 那么走一圈360度，全步方式需要200步 半步方式需要400步 自己可根据步进电机参数来设计
+  27          
+  28          //unsigned int Cnt1;
+  29          
+  30          /********************************/
+  31          /*      延时函数               */
+  32          /********************************/
+  33          void Delay(unsigned int cnt)
+  34          {
+  35   1              while(--cnt);
+  36   1      }
+  37          /********************************/
+  38          /*      主函数                       */
+  39          /********************************/
+  40          main()
+  41          { 
+  42   1              CYCLE=1000;     //脉冲频率
+  43   1              //Cnt1=0;
+  44   1              TMOD |=0x01;    //定时器设置 1ms in 12M crystal
+  45   1              TH0=(65536-CYCLE)/256; 
+  46   1              TL0=(65536-CYCLE)%256;
+  47   1              IE= 0x82;               //打开中断              
+  48   1              TR0=1;
+  49   1              while(1)
+  50   1              {
+  51   2                      if(!ADJ)
+  52   2                      {
+  53   3                              Delay(10000);   //延时去抖动
+C51 COMPILER V7.06   STEPMOTOR_L298DRVTEST                                                 05/01/2011 09:08:04 PAGE 2   
+
+  54   3                              if(!ADJ)
+  55   3                              {       
+  56   4                                      if(CYCLE<10000) CYCLE+=1000;    
+  57   4                                      else                    CYCLE=1000;                     
+  58   4                              }
+  59   3                      }
+  60   2              }
+  61   1      }
+  62          /********************************/
+  63          /*      定时器0中断服务函数     */
+  64          /********************************/
+  65          void Timer0(void) interrupt 1 using 1
+  66          {
+  67   1              static unsigned char Cnt;
+  68   1      
+  69   1              TH0=(65536-CYCLE)/256; 
+  70   1              TL0=(65536-CYCLE)%256;
+  71   1              
+  72   1              if(Cnt<8)       Cnt++;
+  73   1              else            Cnt=0;
+  74   1              P1=F_Rotation[Cnt];  //输出对应的相 
+  75   1      
+  76   1              //Cnt1++;
+  77   1              //if(Cnt1==400) TR0=0;
+  78   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    260    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

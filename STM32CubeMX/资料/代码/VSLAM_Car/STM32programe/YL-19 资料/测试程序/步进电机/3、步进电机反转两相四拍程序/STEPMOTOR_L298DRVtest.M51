@@ -1,0 +1,119 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/05/2012  11:15:31  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+E:\安装软件\KEIL-51\C51\BIN\BL51.EXE STEPMOTOR_L298DRVtest.obj TO STEPMOTOR_L298DRVtest RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STEPMOTOR_L298DRVtest.obj (STEPMOTOR_L298DRVTEST)
+  E:\安装软件\KEIL-51\C51\LIB\C51S.LIB (?C_STARTUP)
+  E:\安装软件\KEIL-51\C51\LIB\C51S.LIB (?C?SLDIV)
+  E:\安装软件\KEIL-51\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  STEPMOTOR_L298DRVtest (STEPMOTOR_L298DRVTEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            REG     0008H     0008H     ABSOLUTE     "REG BANK 1"
+            DATA    0010H     0003H     UNIT         ?DT?STEPMOTOR_L298DRVTEST
+            IDATA   0013H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0004H     UNIT         ?CO?STEPMOTOR_L298DRVTEST
+                    0007H     0004H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00CEH     UNIT         ?C?LIB_CODE
+            CODE    00DCH     0076H     UNIT         ?PR?TIMER0?STEPMOTOR_L298DRVTEST
+            CODE    0152H     0058H     UNIT         ?PR?MAIN?STEPMOTOR_L298DRVTEST
+            CODE    01AAH     0044H     UNIT         ?C?LDIV
+            CODE    01EEH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   STEPMOTOR_L298DRVtest (STEPMOTOR_L298DRVTEST)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?TIMER0?STEPMOTOR_L298DRVTEST
+  +--> ?CO?STEPMOTOR_L298DRVTEST
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?STEPMOTOR_L298DRVTEST
+
+
+
+SYMBOL TABLE OF MODULE:  STEPMOTOR_L298DRVtest (STEPMOTOR_L298DRVTEST)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2012  11:15:31  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        STEPMOTOR_L298DRVTEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0152H         PUBLIC        main
+  C:00DCH         PUBLIC        Timer0
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:0011H         PUBLIC        CYCLE
+  C:0003H         PUBLIC        B_Rotation
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0152H         LINE#         31
+  C:0152H         LINE#         32
+  C:0152H         LINE#         33
+  C:0158H         LINE#         35
+  C:015BH         LINE#         36
+  C:017EH         LINE#         37
+  C:01A3H         LINE#         38
+  C:01A6H         LINE#         39
+  C:01A8H         LINE#         40
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER0
+  -------         DO            
+  D:0010H         SYMBOL        Cnt
+  -------         ENDDO         
+  C:00DCH         LINE#         45
+  C:00E9H         LINE#         49
+  C:010CH         LINE#         50
+  C:0131H         LINE#         52
+  C:013CH         LINE#         53
+  C:013FH         LINE#         54
+  C:0147H         LINE#         56
+  -------         ENDPROC       TIMER0
+  -------         ENDMOD        STEPMOTOR_L298DRVTEST
+
+  -------         MODULE        ?C?SLDIV
+  C:01AAH         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:004AH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+Program Size: data=20.0 xdata=0 code=502
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

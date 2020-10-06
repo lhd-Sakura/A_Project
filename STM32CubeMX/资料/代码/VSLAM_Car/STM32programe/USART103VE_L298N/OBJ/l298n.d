@@ -1,0 +1,14 @@
+..\obj\l298n.o: ..\HARDWARE\L298N\L298N.c
+..\obj\l298n.o: ..\HARDWARE\L298N\L298N.h
+..\obj\l298n.o: ..\USER\stm32f10x.h
+..\obj\l298n.o: ..\CORE\core_cm3.h
+..\obj\l298n.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\l298n.o: ..\USER\system_stm32f10x.h
+..\obj\l298n.o: ..\USER\stm32f10x_conf.h
+..\obj\l298n.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\obj\l298n.o: ..\USER\stm32f10x.h
+..\obj\l298n.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\obj\l298n.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\obj\l298n.o: ..\STM32F10x_FWLib\inc\misc.h
+..\obj\l298n.o: ..\SYSTEM\delay\delay.h
+..\obj\l298n.o: ..\SYSTEM\sys\sys.h

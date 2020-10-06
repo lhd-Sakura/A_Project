@@ -1,0 +1,145 @@
+Dependencies for Project 'STM32F103L298N', Target 'STM32F103L298N': (DO NOT MODIFY !)
+F (.\main.c)(0x5D8F787E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+I (..\SYSTEM\delay\delay.h)(0x5829BD39)
+I (..\SYSTEM\sys\sys.h)(0x5829BD39)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+I (..\SYSTEM\usart\usart.h)(0x5829BD3A)
+I (D:\keil5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\HARDWARE\LED\led.h)(0x5CA8E209)
+I (..\HARDWARE\L298N\L298N.h)(0x5D8F795C)
+F (.\stm32f10x_it.c)(0x5829BD3B)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_it.o --omf_browse ..\obj\stm32f10x_it.crf --depend ..\obj\stm32f10x_it.d)
+I (stm32f10x_it.h)(0x5829BD3B)
+I (stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (system_stm32f10x.h)(0x5829BD3B)
+I (stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+F (.\system_stm32f10x.c)(0x5829BD3B)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\system_stm32f10x.o --omf_browse ..\obj\system_stm32f10x.crf --depend ..\obj\system_stm32f10x.d)
+I (stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (system_stm32f10x.h)(0x5829BD3B)
+I (stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+F (..\HARDWARE\LED\led.c)(0x5CA8E162)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\led.o --omf_browse ..\obj\led.crf --depend ..\obj\led.d)
+I (..\HARDWARE\LED\led.h)(0x5CA8E209)
+I (..\SYSTEM\sys\sys.h)(0x5829BD39)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+F (..\HARDWARE\L298N\L298N.c)(0x5D8F792A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\l298n.o --omf_browse ..\obj\l298n.crf --depend ..\obj\l298n.d)
+I (..\HARDWARE\L298N\L298N.h)(0x5D8F795C)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+I (..\SYSTEM\delay\delay.h)(0x5829BD39)
+I (..\SYSTEM\sys\sys.h)(0x5829BD39)
+F (..\HARDWARE\L298N\L298N.h)(0x5D8F795C)()
+F (..\SYSTEM\delay\delay.c)(0x586E171A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
+I (..\SYSTEM\delay\delay.h)(0x5829BD39)
+I (..\SYSTEM\sys\sys.h)(0x5829BD39)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+F (..\SYSTEM\sys\sys.c)(0x5829BD39)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\sys.o --omf_browse ..\obj\sys.crf --depend ..\obj\sys.d)
+I (..\SYSTEM\sys\sys.h)(0x5829BD39)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+F (..\SYSTEM\usart\usart.c)(0x5D8F43DF)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
+I (..\SYSTEM\sys\sys.h)(0x5829BD39)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+I (..\SYSTEM\usart\usart.h)(0x5829BD3A)
+I (D:\keil5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+F (..\CORE\core_cm3.c)(0x5829BD27)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\core_cm3.o --omf_browse ..\obj\core_cm3.crf --depend ..\obj\core_cm3.d)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+F (..\CORE\startup_stm32f10x_md.s)(0x5829BD27)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 528" --pd "STM32F10X_HD SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o ..\obj\startup_stm32f10x_md.o --depend ..\obj\startup_stm32f10x_md.d)
+F (..\STM32F10x_FWLib\src\misc.c)(0x5829BD32)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\misc.o --omf_browse ..\obj\misc.crf --depend ..\obj\misc.d)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+F (..\STM32F10x_FWLib\src\stm32f10x_gpio.c)(0x5829BD36)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_gpio.o --omf_browse ..\obj\stm32f10x_gpio.crf --depend ..\obj\stm32f10x_gpio.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+F (..\STM32F10x_FWLib\src\stm32f10x_rcc.c)(0x5829BD38)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_rcc.o --omf_browse ..\obj\stm32f10x_rcc.crf --depend ..\obj\stm32f10x_rcc.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)
+F (..\STM32F10x_FWLib\src\stm32f10x_usart.c)(0x5829BD39)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\L298N-I.\RTE\_STM32F103L298N-ID:\keil5\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_usart.o --omf_browse ..\obj\stm32f10x_usart.crf --depend ..\obj\stm32f10x_usart.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5829BD31)
+I (..\USER\stm32f10x.h)(0x5829BD3A)
+I (..\CORE\core_cm3.h)(0x5829BD27)
+I (D:\keil5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\USER\system_stm32f10x.h)(0x5829BD3B)
+I (..\USER\stm32f10x_conf.h)(0x586E1408)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x5829BD2D)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5829BD30)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x5829BD2A)

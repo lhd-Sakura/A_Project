@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"rct6_temperture\startup_stm32f103xe.o"
+"rct6_temperture\main.o"
+"rct6_temperture\gpio.o"
+"rct6_temperture\usart.o"
+"rct6_temperture\stm32f1xx_it.o"
+"rct6_temperture\stm32f1xx_hal_msp.o"
+"rct6_temperture\stm32f1xx_hal_gpio_ex.o"
+"rct6_temperture\stm32f1xx_hal_tim.o"
+"rct6_temperture\stm32f1xx_hal_tim_ex.o"
+"rct6_temperture\stm32f1xx_hal_uart.o"
+"rct6_temperture\stm32f1xx_hal.o"
+"rct6_temperture\stm32f1xx_hal_rcc.o"
+"rct6_temperture\stm32f1xx_hal_rcc_ex.o"
+"rct6_temperture\stm32f1xx_hal_gpio.o"
+"rct6_temperture\stm32f1xx_hal_dma.o"
+"rct6_temperture\stm32f1xx_hal_cortex.o"
+"rct6_temperture\stm32f1xx_hal_pwr.o"
+"rct6_temperture\stm32f1xx_hal_flash.o"
+"rct6_temperture\stm32f1xx_hal_flash_ex.o"
+"rct6_temperture\stm32f1xx_hal_exti.o"
+"rct6_temperture\system_stm32f1xx.o"
+"rct6_temperture\bsp_temperature.o"
+--library_type=microlib --strict --scatter "RCT6_Temperture\RCT6_Temperture.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "RCT6_Temperture.map" -o RCT6_Temperture\RCT6_Temperture.axf

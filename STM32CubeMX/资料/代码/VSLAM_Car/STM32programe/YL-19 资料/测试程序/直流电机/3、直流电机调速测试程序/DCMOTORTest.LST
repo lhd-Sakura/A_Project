@@ -1,0 +1,128 @@
+C51 COMPILER V7.06   DCMOTORTEST                                                           05/01/2011 08:40:06 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE DCMOTORTEST
+OBJECT MODULE PLACED IN DCMOTORTest.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE DCMOTORTest.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*********************************************************************************************************
+             -****
+   2          *                                                                                               测试说明
+   3          *1、MCU:STC89C52RC
+   4          *2、测试频率:12Mhz
+   5          *2、编程语言:C51
+   6          *2、编译环境:Keil C
+   7          *2、功能:调速运行
+   8          **********************************************************************************************************
+             -***/
+   9          
+  10          #include <reg52.h>
+  11          
+  12          //LMD298输入控制端定义
+  13          sbit IN1 = P1^0;
+  14          sbit IN2 = P1^1;        
+  15          sbit IN3 = P1^2;        
+  16          sbit IN4 = P1^3;
+  17          
+  18          sbit ENA = P1^4;        
+  19          sbit ENB = P1^5;
+  20          
+  21          sbit CW = P3^0;         //正转运行按键
+  22          sbit STOP = P3^1;       //停止运行按键
+  23          sbit CCW = P3^2;        //反转运行按键
+  24          sbit ADJ = P3^3;        //调速运行按键
+  25          
+  26          unsigned char CYCLE; //周期变量
+  27          unsigned char DUTY; //占空比变量,对应于调速运行时按键次数，调速时每按一次调速键速度比上次变化10%
+  28          
+  29          /********************************/
+  30          /*      延时函数               */
+  31          /********************************/
+  32          void Delay(unsigned int cnt)
+  33          {
+  34   1              while(--cnt);
+  35   1      }
+  36          /********************************/
+  37          /*      主函数                       */
+  38          /********************************/
+  39          main()
+  40          {
+  41   1              TMOD |=0x01;    //定时器设置 1ms in 12M crystal
+  42   1              TH0=(65536-1000)/256; 
+  43   1              TL0=(65536-1000)%256;//定时1mS 
+  44   1              IE= 0x82;               //打开中断      
+  45   1              
+  46   1              IN1=1;                  //停止
+  47   1              IN2=1;
+  48   1              IN3=1;
+  49   1              IN4=1;
+  50   1              ENA=0;
+  51   1              ENB=0;
+  52   1      
+  53   1              CYCLE=10;       //周期10ms
+C51 COMPILER V7.06   DCMOTORTEST                                                           05/01/2011 08:40:06 PAGE 2   
+
+  54   1              DUTY=0;         //占空比=0
+  55   1      
+  56   1              while(1)
+  57   1              {       
+  58   2                      if(!ADJ)
+  59   2                      {
+  60   3                              Delay(15000);   //延时去抖动
+  61   3                              if(!ADJ)
+  62   3                              {       
+  63   4                                      TR0=1;
+  64   4                                      if(DUTY<CYCLE)  DUTY+=1;        //增加占空比
+  65   4                                      else                    DUTY=0;
+  66   4                                      
+  67   4                                      //这里是正转调速，反转调速可以自己试着编写
+  68   4                                      IN1=1;                  
+  69   4                                      IN2=0;                  
+  70   4                                      ENA=0;  
+  71   4                                      IN3=1;                  
+  72   4                                      IN4=0;                  
+  73   4                                      ENB=0;  
+  74   4                              }
+  75   3                      }
+  76   2         }
+  77   1      }
+  78          /********************************/
+  79          /*      定时器0中断服务函数     */
+  80          /********************************/
+  81          void Timer0(void) interrupt 1 using 1
+  82          {
+  83   1              static unsigned char Cnt;
+  84   1      
+  85   1              TH0=(65536-1000)/256; 
+  86   1              TL0=(65536-1000)%256;//定时1mS 
+  87   1              
+  88   1              if(DUTY==CYCLE) Cnt=CYCLE;
+  89   1              else                    Cnt++;
+  90   1              if(Cnt==DUTY)           //高电平时间到
+  91   1              {
+  92   2                      ENA = 0; 
+  93   2                      ENB = 0; 
+  94   2              }
+  95   1              if(Cnt == CYCLE)        //低电平时间到
+  96   1              {
+  97   2                      ENA = 1; 
+  98   2                      ENB = 1; 
+  99   2                  Cnt=0;
+ 100   2              }
+ 101   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    131    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

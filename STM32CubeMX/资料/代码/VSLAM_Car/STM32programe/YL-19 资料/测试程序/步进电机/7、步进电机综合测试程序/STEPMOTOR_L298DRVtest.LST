@@ -1,0 +1,157 @@
+C51 COMPILER V9.00   STEPMOTOR_L298DRVTEST                                                 06/05/2012 11:16:34 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE STEPMOTOR_L298DRVTEST
+OBJECT MODULE PLACED IN STEPMOTOR_L298DRVtest.OBJ
+COMPILER INVOKED BY: E:\安装软件\keil-51\C51\BIN\C51.EXE STEPMOTOR_L298DRVtest.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*********************************************************************************************************
+             -****
+   2          *                                                                                               测试说明
+   3          *1、MCU:STC89C52RC
+   4          *2、测试频率:11.0592Mhz
+   5          *2、编程语言:C51
+   6          *2、编译环境:Keil C
+   7          *2、功能:全速正转、全速反转、停止、调速运行
+   8          **********************************************************************************************************
+             -***/
+   9          
+  10          #include <reg52.h>
+  11          
+  12          //L298输入控制端定义
+  13          sbit IN1 = P1^0;
+  14          sbit IN2 = P1^1;        
+  15          sbit IN3 = P1^2;        
+  16          sbit IN4 = P1^3;
+  17          sbit ENA = P1^4;        
+  18          sbit ENB = P1^5;
+  19          
+  20          sbit CW = P3^0;         //正转运行按键
+  21          sbit STOP = P3^1;       //停止运行按键
+  22          sbit CCW = P3^2;        //反转运行按键
+  23          sbit ADJ = P3^3;        //调速运行按键
+  24          
+  25          bit Run_Status;         //运行状态位标志，
+  26                                                  //=0表示电机在停止状态，可以按键正转、反转均可
+  27                                                  //=1表示电机在运行状态，不支持正反转按键，只有先停止。防止强行换向带来的电流过大。
+  28          
+  29          unsigned char Run_Dir;  //电机运行方向
+  30          
+  31          #define F_DIR   0               //正转
+  32          #define B_DIR   1               //反转
+  33          
+  34          unsigned int CYCLE; //周期变量
+  35          
+  36          unsigned char code F_Rotation[8]={0x3a,0x28,0x39,0x11,0x35,0x24,0x36,0x12};     //正转表格 半步方式
+  37          unsigned char code B_Rotation[8]={0x12,0x36,0x24,0x35,0x11,0x39,0x28,0x3a};     //反转表格 半步方式
+  38          
+  39          
+  40          /********************************/
+  41          /*      延时函数               */
+  42          /********************************/
+  43          void Delay(unsigned int cnt)
+  44          {
+  45   1              while(--cnt);
+  46   1      }
+  47          /********************************/
+  48          /*      主函数                       */
+  49          /********************************/
+  50          main()
+  51          { 
+  52   1              Run_Status=0;
+  53   1              CYCLE=1000;     //脉冲频率
+C51 COMPILER V9.00   STEPMOTOR_L298DRVTEST                                                 06/05/2012 11:16:34 PAGE 2   
+
+  54   1              
+  55   1              TMOD |=0x01;    //定时器设置 1ms in 12M crystal
+  56   1              TH0=(65536-CYCLE)/256; 
+  57   1              TL0=(65536-CYCLE)%256;
+  58   1              IE= 0x82;               //打开中断              
+  59   1      
+  60   1              while(1)
+  61   1              {
+  62   2                      if(!STOP)                       //任何时候按停止键，电机停止运行
+  63   2                      {       
+  64   3                              Delay(1000);    //延时去抖动
+  65   3                              if(!STOP)                       
+  66   3                              {               
+  67   4                                      Run_Status=0;   //电机正在停止的状态标志
+  68   4                                      P1=F_Rotation[0]; 
+  69   4                                      TR0=0;
+  70   4                              }
+  71   3                      }
+  72   2                      if(!CW&&!Run_Status)//按正转键同时电机不是正在运行时，电机正转运行
+  73   2                      {
+  74   3                              Delay(1000);    //延时去抖动
+  75   3                              if(!CW&&!Run_Status)                    
+  76   3                              {       
+  77   4                                      Run_Status=1;//电机正在运行的状态标志
+  78   4                                      TR0=1;
+  79   4                                      CYCLE=1000;
+  80   4                                      Run_Dir=F_DIR;//电机运行方向正转                                
+  81   4                              }
+  82   3                      }
+  83   2                      if(!CCW&&!Run_Status)//按反转键同时电机不是正在运行时，电机反转运行
+  84   2                      {
+  85   3                              Delay(1000);    //延时去抖动
+  86   3                              if(!CCW&&!Run_Status)                   
+  87   3                              {       
+  88   4                                      Run_Status=1;//电机正在运行的状态标志
+  89   4                                      TR0=1;
+  90   4                                      CYCLE=1000;
+  91   4                                      Run_Dir=B_DIR;//电机运行方向反转
+  92   4                              }
+  93   3                      }
+  94   2                      if(!ADJ)
+  95   2                      {
+  96   3                              Delay(10000);   //延时去抖动
+  97   3                              if(!ADJ)
+  98   3                              {       
+  99   4                                      if(CYCLE<5000)  CYCLE+=500;     
+ 100   4                                      else                    CYCLE=1000;
+ 101   4                                      Run_Status=1;
+ 102   4                                      TR0=1;
+ 103   4                              }
+ 104   3                      }
+ 105   2         }
+ 106   1      }/********************************/
+ 107          /*      定时器0中断服务函数     */
+ 108          /********************************/
+ 109          void Timer0(void) interrupt 1 using 1
+ 110          {
+ 111   1              static unsigned char Cnt;
+ 112   1      
+ 113   1              TH0=(65536-CYCLE)/256; 
+ 114   1              TL0=(65536-CYCLE)%256;
+ 115   1              
+C51 COMPILER V9.00   STEPMOTOR_L298DRVTEST                                                 06/05/2012 11:16:34 PAGE 3   
+
+ 116   1              if(Run_Dir==F_DIR)//电机运行方向正转            
+ 117   1              {
+ 118   2                      if(Cnt<8)       Cnt++;
+ 119   2                      else            Cnt=0;
+ 120   2                      P1=F_Rotation[Cnt];  //输出对应的相 
+ 121   2              }
+ 122   1              if(Run_Dir==B_DIR)//电机运行方向反转            
+ 123   1              {
+ 124   2                      if(Cnt<8)       Cnt++;
+ 125   2                      else            Cnt=0;
+ 126   2                      P1=B_Rotation[Cnt];  //输出对应的相 
+ 127   2              }
+ 128   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    376    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

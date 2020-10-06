@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\BUTTON" 
+PRINT(".\Listings\BUTTON.m51")

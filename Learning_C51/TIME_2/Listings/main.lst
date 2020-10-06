@@ -1,0 +1,58 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              09/11/2019 17:34:40 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          //本实验proteus仿真使用TIME_1的仿真实验
+   2          
+   3          #include<reg51.h>
+   4          #include"main.h"
+   5          
+   6          sbit OUT_PIN = P2^0;
+   7          
+   8          void timer0_inter() interrupt 1
+   9          {
+  10   1        OUT_PIN = ~OUT_PIN;
+  11   1        
+  12   1      }
+  13          
+  14          void main()
+  15          {
+  16   1        P2 = 0xFF;
+  17   1        
+  18   1        TL0 = 0x06;                 //定时器初始值 
+  19   1        TH0 = 0x06;                 //TH0=256-250
+  20   1        TMOD = 2;
+  21   1        ET0 = 1;                    //打开T0中断
+  22   1        EA = 1;
+  23   1        
+  24   1        TR0 = 1;                    //启用T0定时器
+  25   1        
+  26   1        while(1);
+  27   1        
+  28   1      
+  29   1      }
+  30          
+  31          
+  32          
+  33          
+  34          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     23    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

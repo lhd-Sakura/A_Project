@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+    <FileVersion>2.0</FileVersion> 
+
+    <ProjectPath>E:\飞思卡尔\第一部小车\资料\代码\VSLAM_Car\STM32programe\code_DIY\</ProjectPath> 
+
+    <ProjectName>code_DIY</ProjectName>     <ProjectNature>C</ProjectNature> 
+
+    <HAL_Driver>C:\Users\Administrator\STM32Cube\Repository\STM32Cube_FW_F1_V1.8.0\</HAL_Driver>
+    <CMSIS>..\Drivers\CMSIS</CMSIS> 
+    <Toolchain>MDK-ARM</Toolchain>
+    <Toolversion>5</Toolversion>
+    <Version>0</Version>
+
+    <configs>
+<config>
+    <name>code_DIY</name>	 
+    <device>STM32F103RCTx</device>		 
+    <cpucore></cpucore>
+    <fpu>none</fpu>  
+    <memories>   
+        <memory name="RAM" access="xrw" start="0x20000000" size="48" />
+        <memory name="FLASH" access="rx" start="0x8000000" size="256" />
+        </memories>
+    <startup>C:\Users\Administrator\STM32Cube\Repository\STM32Cube_FW_F1_V1.8.0\..\Drivers\CMSIS\Device\ST\STM32F1xx\Source\Templates\gcc\startup_stm32f103xe.s</startup>      
+
+    <heapSize>0x200</heapSize>
+    <stackSize>0x400</stackSize>
+
+    <cpuclock>72</cpuclock>
+    <board>custom</board>
+
+    <debugprobe>swd</debugprobe>
+    <optimization></optimization>
+    <icfloc>1</icfloc>
+
+    <Aincludes>
+        <include></include>
+
+        </Aincludes>
+    <Adefines>
+        </Adefines>  
+    <Cdefines>
+        <define>USE_HAL_DRIVER</define>
+        <define>STM32F103xE</define>
+        <define>USE_HAL_DRIVER</define>
+        <define>STM32F103xE</define>
+        </Cdefines>
+    <Ldefines>
+        </Ldefines>
+    <definestoremove>
+        <Adefines>
+            </Adefines>
+        <Cdefines>
+            <define>USE_FULL_LL_DRIVER</define>
+            <define>MBEDTLS_CONFIG_FILE=&lt;mbedtls_config.h&gt;</define>
+            </Cdefines> 
+        <Ldefines>
+            </Ldefines> 
+        </definestoremove>
+
+    <inctoremove>
+        <Aincludes>
+            <include></include>
+            </Aincludes>
+        <Cincludes>
+            </Cincludes>
+        </inctoremove>
+    <filestoremove>
+        <file>
+            <name>..\Drivers\CMSIS\Device\ST\STM32F1xx\Source\Templates\arm\startup_stm32f103xe.s</name>
+            </file>
+        </filestoremove>
+    <Cincludes>
+        <include>..\Inc</include>
+        <include>..\Drivers\STM32F1xx_HAL_Driver\Inc</include>
+        <include>..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy</include>
+        <include>..\Drivers\CMSIS\Device\ST\STM32F1xx\Include</include>
+        <include>..\Drivers\CMSIS\Include</include>
+
+        </Cincludes>
+    </config>
+        </configs> 
+
+    <underRoot>false</underRoot>
+     <group>
+        <name>Drivers</name> 
+        <group>
+            <name>STM32F1xx_HAL_Driver</name>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_iwdg.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c</name>
+
+                </file>
+            <file>
+                <name>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c</name>
+
+                </file>
+            </group>
+        <group>
+            <name>CMSIS</name>
+            <file>
+                <name>../Src/system_stm32f1xx.c</name>
+                </file>
+            </group>
+        </group>   
+    <group>
+        <name>Application</name>
+        <group>
+            <name>User</name>
+     
+                <file>
+                    <name>..\Src\main.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\gpio.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\dma.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\i2c.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\iwdg.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\spi.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\tim.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\usart.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\stm32f1xx_it.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\stm32f1xx_hal_msp.c</name>
+                    </file>
+                <file>
+                    <name>..\Src\stm32f1xx_hal_timebase_tim.c</name>
+                    </file>
+
+            </group> 
+        </group>
+
+    </Project>
+

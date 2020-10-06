@@ -1,0 +1,83 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/29/2012  10:05:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+E:\安装软件\KEIL-51\C51\BIN\BL51.EXE DCMOTORTest.obj TO DCMOTOR_L298DRVTest RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  DCMOTORTest.obj (DCMOTORTEST)
+  E:\安装软件\KEIL-51\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     000EH     UNIT         ?PR?MAIN?DCMOTORTEST
+            CODE    0011H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?DCMOTORTEST
+
+
+
+SYMBOL TABLE OF MODULE:  DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DCMOTORTEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:0090H.0       PUBLIC        IN1
+  B:0090H.1       PUBLIC        IN2
+  B:0090H.2       PUBLIC        IN3
+  B:0090H.3       PUBLIC        IN4
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/29/2012  10:05:32  PAGE 2
+
+
+  B:0090H.4       PUBLIC        ENA
+  B:0090H.5       PUBLIC        ENB
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0003H         LINE#         23
+  C:0003H         LINE#         24
+  C:0003H         LINE#         25
+  C:0005H         LINE#         26
+  C:0007H         LINE#         27
+  C:0009H         LINE#         28
+  C:000BH         LINE#         29
+  C:000DH         LINE#         30
+  C:000FH         LINE#         32
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        DCMOTORTEST
+
+Program Size: data=9.0 xdata=0 code=29
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,123 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              09/22/2019 19:56:23 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          
+   2          #include <reg52.h>
+   3          #include <intrins.h>
+   4          
+   5          typedef unsigned char u8;     // 重命名类型u8简化代码编写
+   6          typedef unsigned int u16;
+   7          
+   8          sbit gA = P2^2;         // 38译码器输入口A
+   9          sbit gB = P2^3;         // 38译码器输入口B
+  10          sbit gC = P2^4;         // 38译码器输入口C
+  11          
+  12          
+  13          
+  14          
+  15          
+  16          unsigned char code gDuanMa[16]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+  17                    0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};
+  18          
+  19          
+  20          
+  21          void UartInit(void);
+  22          void UartSendByte(u8 c);
+  23          
+  24          
+  25          void delay10ms(void)   //误差 0us
+  26          {
+  27   1          unsigned char a,b,c;
+  28   1          for(c=1;c>0;c--)
+  29   1              for(b=38;b>0;b--)
+  30   1                  for(a=130;a>0;a--);
+  31   1      }
+  32          
+  33          
+  34          void main(void)
+  35          {
+  36   1        UartInit();
+  37   1        while (1);
+  38   1      }
+  39          
+  40          void UartInit(void)
+  41          {
+  42   1          TMOD = 0x20;    // T1设置为8位自动重装载定时器      
+  43   1          SCON = 0x50;    // 串口工作在模式1：8位UART波特率可变，且允许接收
+  44   1          TH1 = 0xE6;     // 单片机小精灵V1.3算出的2400波特率且波特率
+  45   1          TL1 = TH1;      // 加倍时的定时器设置值。
+  46   1          PCON = 0x80;    // 设置为波特率加倍
+  47   1        EA = 1;       // 开总中断
+  48   1        ES = 1;         // 开串口中断
+  49   1        TR1 = 1;        // 定时器1开启计数
+  50   1      }
+  51          
+  52          
+  53          /*
+  54          void UartSendByte(u8 c)
+C51 COMPILER V9.60.0.0   MAIN                                                              09/22/2019 19:56:23 PAGE 2   
+
+  55          {
+  56              SBUF = c;
+  57              while (!TI);
+  58              TI = 0;
+  59          }
+  60          */
+  61          
+  62          
+  63          
+  64          void UartIsr(void) interrupt 4  // 注意串口中断的编号是4
+  65          {
+  66   1        u8 c = 0;           // 临时变量用于存储串口中断接收的字符
+  67   1      
+  68   1          if (RI)           // 串口接收中断
+  69   1          {
+  70   2              RI = 0;
+  71   2              //add your code here!
+  72   2          c = SBUF;       // 通过串口接收外部发送的字符
+  73   2            
+  74   2        gA = 1; gB = 1; gC = 1;         // 位选数码管0
+  75   2        P0 = gDuanMa[c];
+  76   2        delay10ms();            // 间隔一段显示时间 
+  77   2      
+  78   2            
+  79   2            
+  80   2            
+  81   2            
+  82   2      //    UartSendByte(c + 1);  // 加1后回发出去
+  83   2            
+  84   2            
+  85   2            
+  86   2          }
+  87   1          else            // 串口发送中断
+  88   1              TI = 0;         // if else中如果只有1句代码则可不加大括号
+  89   1      }
+  90          
+  91          
+  92          
+  93          
+  94          
+  95          
+  96          
+  97          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    132    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

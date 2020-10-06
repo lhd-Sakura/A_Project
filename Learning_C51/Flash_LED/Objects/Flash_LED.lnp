@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\mian.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\Flash_LED" 
+PRINT(".\Listings\Flash_LED.m51")

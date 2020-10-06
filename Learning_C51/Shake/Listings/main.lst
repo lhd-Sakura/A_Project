@@ -1,0 +1,94 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              09/07/2019 09:18:54 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include"main.h"
+   3          #include"delay.h"
+   4          
+   5          //引脚定义
+   6          sbit K1 = P3^2;
+   7          sbit K2 = P3^3;
+   8          sbit LED1 = P2^5;
+   9          sbit LED2 = P2^6;
+  10          
+  11          //数码管显示码
+  12          uchar code DIS_CODE[12]= {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF,0x0C};
+  13          
+  14          void main()
+  15          {
+  16   1        uchar key_val = 0;
+  17   1        
+  18   1        //端口初始化
+  19   1        P0 = 0xFF;
+  20   1        P2 = 0xFF;
+  21   1        P3 = 0xFF;
+  22   1        
+  23   1        key_val = 0xFF;      //覆盖两个按键，观察按键值有无变动
+  24   1        P0 = DIS_CODE[11];
+  25   1        while(1)
+  26   1        {
+  27   2          if(key_val != P3)
+  28   2          {
+  29   3            key_val = P3;
+  30   3            
+  31   3            if(K1==0)                   //延迟10ms消除抖动（错过抖动时间）再次判断
+  32   3            {
+  33   4              delay_ms(10);
+  34   4              if(K1 == 0)
+  35   4              {
+  36   5                LED1 = 0;
+  37   5                LED2 = 1;
+  38   5                P0 = DIS_CODE[1];
+  39   5              
+  40   5              }
+  41   4              
+  42   4            }
+  43   3            
+  44   3            else if(K2==0)
+  45   3            {
+  46   4              delay_ms(10);              //
+  47   4              if(K2==0)
+  48   4              {
+  49   5                LED1 = 1;
+  50   5                LED2 = 0;
+  51   5                P0 = DIS_CODE[2];
+  52   5                
+  53   5              } 
+  54   4              
+C51 COMPILER V9.60.0.0   MAIN                                                              09/07/2019 09:18:54 PAGE 2   
+
+  55   4              
+  56   4              
+  57   4            }
+  58   3            
+  59   3          
+  60   3          }
+  61   2          
+  62   2          delay_ms(20);
+  63   2        }
+  64   1      
+  65   1      }
+  66          
+  67          
+  68          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     85    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

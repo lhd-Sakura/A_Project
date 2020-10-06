@@ -1,0 +1,147 @@
+BL51 BANKED LINKER/LOCATER V5.03                                                        05/01/2011  08:51:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.03, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE DCMOTORTest.obj TO DCMOTOR_L298DRVTest RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  DCMOTORTest.obj (DCMOTORTEST)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?DCMOTORTEST
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0079H     UNIT         ?PR?MAIN?DCMOTORTEST
+            CODE    0087H     0013H     UNIT         ?PR?TIMER0?DCMOTORTEST
+            CODE    009AH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?DCMOTORTEST
+
+
+
+SYMBOL TABLE OF MODULE:  DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DCMOTORTEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0008H         PUBLIC        Cnt
+  C:000EH         PUBLIC        main
+  C:0087H         PUBLIC        Timer0
+BL51 BANKED LINKER/LOCATER V5.03                                                      05/01/2011  08:51:05  PAGE 2
+
+
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:0090H.0       PUBLIC        IN1
+  B:0090H.1       PUBLIC        IN2
+  B:0090H.2       PUBLIC        IN3
+  B:0090H.3       PUBLIC        IN4
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0090H.4       PUBLIC        ENA
+  B:0090H.5       PUBLIC        ENB
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:000EH         LINE#         27
+  C:000EH         LINE#         28
+  C:000EH         LINE#         29
+  C:0011H         LINE#         30
+  C:0014H         LINE#         31
+  C:0017H         LINE#         32
+  C:001AH         LINE#         33
+  C:001CH         LINE#         35
+  C:001EH         LINE#         36
+  C:0020H         LINE#         37
+  C:0022H         LINE#         38
+  C:0024H         LINE#         39
+  C:0026H         LINE#         40
+  C:0028H         LINE#         42
+  C:0028H         LINE#         43
+  C:0028H         LINE#         44
+  C:0032H         LINE#         45
+  C:0032H         LINE#         46
+  C:0034H         LINE#         47
+  C:0036H         LINE#         48
+  C:0038H         LINE#         49
+  C:003AH         LINE#         50
+  C:003CH         LINE#         51
+  C:003EH         LINE#         52
+  C:003EH         LINE#         53
+  C:0048H         LINE#         54
+  C:0048H         LINE#         55
+  C:004AH         LINE#         56
+  C:004CH         LINE#         57
+  C:004EH         LINE#         58
+  C:0050H         LINE#         59
+  C:0052H         LINE#         60
+  C:0054H         LINE#         61
+  C:0054H         LINE#         62
+  C:005EH         LINE#         63
+  C:005EH         LINE#         64
+  C:0060H         LINE#         65
+  C:0062H         LINE#         66
+  C:0064H         LINE#         67
+  C:0066H         LINE#         68
+  C:0068H         LINE#         69
+  C:006AH         LINE#         70
+BL51 BANKED LINKER/LOCATER V5.03                                                      05/01/2011  08:51:05  PAGE 3
+
+
+  C:006AH         LINE#         71
+  C:0074H         LINE#         72
+  C:0074H         LINE#         73
+  C:0076H         LINE#         74
+  C:0078H         LINE#         75
+  C:007AH         LINE#         76
+  C:007CH         LINE#         77
+  C:007EH         LINE#         78
+  C:0080H         LINE#         79
+  C:0085H         LINE#         80
+  C:0085H         LINE#         81
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER0
+  C:0087H         LINE#         86
+  C:0089H         LINE#         88
+  C:008CH         LINE#         89
+  C:008FH         LINE#         91
+  C:0097H         LINE#         92
+  -------         ENDPROC       TIMER0
+  -------         ENDMOD        DCMOTORTEST
+
+Program Size: data=11.0 xdata=0 code=158
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

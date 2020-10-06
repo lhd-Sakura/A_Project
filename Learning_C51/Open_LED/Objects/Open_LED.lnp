@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\mian.obj" 
+TO ".\Objects\Open_LED" 
+PRINT(".\Listings\Open_LED.m51")

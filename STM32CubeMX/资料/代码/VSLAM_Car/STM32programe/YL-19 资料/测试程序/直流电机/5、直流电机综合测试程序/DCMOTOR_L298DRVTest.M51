@@ -1,0 +1,216 @@
+BL51 BANKED LINKER/LOCATER V5.03                                                        05/01/2011  08:52:27  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.03, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE DCMOTORTest.obj TO DCMOTOR_L298DRVTest RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  DCMOTORTest.obj (DCMOTORTEST)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?DCMOTORTEST
+                    000BH     0015H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         ?BI?DCMOTORTEST
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00A1H     UNIT         ?PR?MAIN?DCMOTORTEST
+            CODE    00AFH     003CH     UNIT         ?PR?TIMER0?DCMOTORTEST
+            CODE    00EBH     000EH     UNIT         ?PR?_DELAY?DCMOTORTEST
+            CODE    00F9H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?DCMOTORTEST
+
+?PR?MAIN?DCMOTORTEST
+  +--> ?PR?_DELAY?DCMOTORTEST
+
+
+
+SYMBOL TABLE OF MODULE:  DCMOTOR_L298DRVTest (DCMOTORTEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DCMOTORTEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V5.03                                                      05/01/2011  08:52:27  PAGE 2
+
+
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  B:00B0H.0       PUBLIC        CW
+  B:0020H.0       PUBLIC        Run_Status
+  C:000EH         PUBLIC        main
+  C:00AFH         PUBLIC        Timer0
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:0009H         PUBLIC        DUTY
+  B:00B0H.1       PUBLIC        STOP
+  B:0090H.0       PUBLIC        IN1
+  B:0090H.1       PUBLIC        IN2
+  B:0090H.2       PUBLIC        IN3
+  B:0090H.3       PUBLIC        IN4
+  D:008CH         PUBLIC        TH0
+  B:00B0H.3       PUBLIC        ADJ
+  D:008AH         PUBLIC        TL0
+  C:00EFH         PUBLIC        _Delay
+  B:0090H.4       PUBLIC        ENA
+  B:0090H.5       PUBLIC        ENB
+  B:0088H.4       PUBLIC        TR0
+  B:00B0H.2       PUBLIC        CCW
+  D:00C8H         PUBLIC        T2CON
+  D:000AH         PUBLIC        CYCLE
+  D:00D0H         PUBLIC        PSW
+  C:00EBH         SYMBOL        L?0026
+  -------         PROC          L?0025
+  -------         ENDPROC       L?0025
+  C:00EBH         SYMBOL        L?0026
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        cnt
+  C:00EFH         LINE#         36
+  C:00EFH         LINE#         37
+  C:00EFH         LINE#         38
+  C:00F8H         LINE#         39
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  C:000EH         LINE#         43
+  C:000EH         LINE#         44
+  C:000EH         LINE#         45
+  C:0011H         LINE#         46
+  C:0014H         LINE#         47
+  C:0017H         LINE#         48
+  C:001AH         LINE#         50
+  C:001CH         LINE#         51
+  C:001EH         LINE#         52
+  C:0020H         LINE#         53
+  C:0022H         LINE#         54
+  C:0024H         LINE#         55
+  C:0026H         LINE#         56
+  C:0028H         LINE#         58
+  C:002BH         LINE#         59
+  C:002EH         LINE#         61
+  C:002EH         LINE#         62
+BL51 BANKED LINKER/LOCATER V5.03                                                      05/01/2011  08:52:27  PAGE 3
+
+
+  C:002EH         LINE#         63
+  C:0031H         LINE#         64
+  C:0031H         LINE#         65
+  C:0034H         LINE#         66
+  C:0037H         LINE#         67
+  C:0037H         LINE#         69
+  C:0039H         LINE#         70
+  C:003BH         LINE#         71
+  C:003DH         LINE#         72
+  C:003FH         LINE#         73
+  C:0041H         LINE#         74
+  C:0043H         LINE#         75
+  C:0045H         LINE#         76
+  C:0047H         LINE#         77
+  C:0047H         LINE#         78
+  C:0047H         LINE#         79
+  C:004DH         LINE#         80
+  C:004DH         LINE#         81
+  C:0050H         LINE#         82
+  C:0056H         LINE#         83
+  C:0056H         LINE#         84
+  C:0058H         LINE#         85
+  C:005AH         LINE#         86
+  C:005CH         LINE#         87
+  C:005EH         LINE#         88
+  C:0060H         LINE#         89
+  C:0062H         LINE#         90
+  C:0064H         LINE#         91
+  C:0064H         LINE#         92
+  C:0064H         LINE#         93
+  C:006AH         LINE#         94
+  C:006AH         LINE#         95
+  C:006DH         LINE#         96
+  C:0073H         LINE#         97
+  C:0073H         LINE#         98
+  C:0075H         LINE#         99
+  C:0077H         LINE#         100
+  C:0079H         LINE#         101
+  C:007BH         LINE#         102
+  C:007DH         LINE#         103
+  C:007FH         LINE#         104
+  C:0081H         LINE#         105
+  C:0081H         LINE#         106
+  C:0081H         LINE#         107
+  C:0084H         LINE#         108
+  C:0084H         LINE#         109
+  C:008BH         LINE#         110
+  C:008EH         LINE#         111
+  C:008EH         LINE#         112
+  C:0090H         LINE#         113
+  C:009BH         LINE#         114
+  C:009EH         LINE#         115
+  C:00A0H         LINE#         117
+  C:00A2H         LINE#         118
+  C:00A4H         LINE#         119
+  C:00A6H         LINE#         120
+  C:00A8H         LINE#         121
+BL51 BANKED LINKER/LOCATER V5.03                                                      05/01/2011  08:52:27  PAGE 4
+
+
+  C:00AAH         LINE#         122
+  C:00ACH         LINE#         123
+  C:00ACH         LINE#         124
+  C:00ACH         LINE#         125
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER0
+  -------         DO            
+  D:0008H         SYMBOL        Cnt
+  -------         ENDDO         
+  C:00AFH         LINE#         130
+  C:00B3H         LINE#         134
+  C:00B6H         LINE#         135
+  C:00B9H         LINE#         137
+  C:00C5H         LINE#         138
+  C:00CFH         LINE#         139
+  C:00D1H         LINE#         140
+  C:00D6H         LINE#         141
+  C:00D6H         LINE#         142
+  C:00D8H         LINE#         143
+  C:00DAH         LINE#         144
+  C:00DAH         LINE#         145
+  C:00DFH         LINE#         146
+  C:00DFH         LINE#         147
+  C:00E1H         LINE#         148
+  C:00E3H         LINE#         149
+  C:00E6H         LINE#         150
+  C:00E6H         LINE#         151
+  -------         ENDPROC       TIMER0
+  -------         ENDMOD        DCMOTORTEST
+
+Program Size: data=12.1 xdata=0 code=253
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

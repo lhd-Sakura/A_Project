@@ -1,0 +1,74 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              09/20/2019 08:51:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include"main.h"
+   3          #include"delay.h"
+   4          
+   5          void timer1_init()
+   6          {
+   7   1        TMOD = 0x20;                //定时器T1，工作方式2
+   8   1        TL1 = 0xFD;                 //T1初始值253
+   9   1        TH1 = 0xFD;                 
+  10   1        TR1 = 1;                    //定时器T1启动工作（TCON|0x40）
+  11   1      
+  12   1      }
+  13          
+  14          
+  15          
+  16          void serial_init()
+  17          {
+  18   1        PCON = 0;                  //设定SMOD位为0
+  19   1        SCON = 0x40;               //设定串口工作方式1，REN=0不接收数据
+  20   1      
+  21   1      }
+  22          
+  23          
+  24          void main()
+  25          {
+  26   1        uchar send_data = 0;                //发送数据
+  27   1        uchar i = 0;
+  28   1        
+  29   1        timer1_init();                       //初始化定时器T1
+  30   1        serial_init();                       //初始化串口
+  31   1        IE = 0x00;                           //关闭所有中断
+  32   1        
+  33   1      
+  34   1        while(1)
+  35   1        {
+  36   2          send_data = 'A';
+  37   2          for(i=0;i<26;i++)
+  38   2          {
+  39   3            SBUF = send_data;                //发送缓冲赋值
+  40   3            while(TI == 0);                  //等待发送标志TI置位为1
+  41   3            TI = 0;                          //清空发送标志位TI
+  42   3            send_data++;
+  43   3            delay_ms(100);
+  44   3          
+  45   3          }
+  46   2          
+  47   2          delay_ms(3000);
+  48   2            
+  49   2        
+  50   2        }
+  51   1          
+  52   1      
+  53   1      }
+  54          
+C51 COMPILER V9.60.0.0   MAIN                                                              09/20/2019 08:51:21 PAGE 2   
+
+  55          
+  56          
+  57          
+  58          
+  59          d
+*** ERROR C129 IN LINE 59 OF main.c: missing ';' before ''
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)

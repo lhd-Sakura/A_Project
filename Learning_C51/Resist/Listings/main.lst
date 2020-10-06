@@ -1,0 +1,120 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              09/16/2019 15:21:52 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include"main.h"
+   3          #include"delay.h"
+   4          
+   5          
+   6          uchar code DIS_CODE[12] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x00,0xF3};
+   7          
+   8          void disp_num(uchar num)
+   9          {
+  10   1        uchar sep_num = 0;
+  11   1        uchar ten_num = 0;
+  12   1        
+  13   1        sep_num = num%10;
+  14   1        ten_num = (num%100)/10;
+  15   1        
+  16   1        P2 = 0xFE;
+  17   1        P0 = DIS_CODE[ten_num];
+  18   1        delay_ms(5);
+  19   1        
+  20   1        P2 = 0xFD;
+  21   1        P0 = DIS_CODE[sep_num];
+  22   1        delay_ms(5);
+  23   1      
+  24   1      }
+  25          
+  26          
+  27          
+  28          void int0_inter() interrupt 0 
+  29          {
+  30   1        TL1 = 0;
+  31   1      
+  32   1      }
+  33          
+  34          
+  35          void timer_inter() interrupt 3
+  36          {
+  37   1        TL1 = 0;
+  38   1        
+  39   1      }
+  40          
+  41          
+  42          void main()
+  43          {
+  44   1        uchar num = 0;
+  45   1        P0 = 0xFF;
+  46   1        P2 = 0xFF;
+  47   1        
+  48   1        
+  49   1        //Int0初始化
+  50   1        IT0 = 1;
+  51   1        EX0 = 1;
+  52   1        
+  53   1        //计数器C1初始化
+  54   1        TL1 = 0;
+C51 COMPILER V9.60.0.0   MAIN                                                              09/16/2019 15:21:52 PAGE 2   
+
+  55   1        TH1 = 0;
+  56   1        TMOD = 0x60;
+  57   1        ET1 = 1;
+  58   1        EA = 1;
+  59   1        
+  60   1        
+  61   1        TR1 = 1;
+  62   1        
+  63   1        while(1)
+  64   1        {
+  65   2          num = TL1;
+  66   2          disp_num(num);
+  67   2          
+  68   2      
+  69   2        }
+  70   1        
+  71   1      
+  72   1      }
+  73          
+  74          
+  75          
+  76          
+  77          
+  78          
+  79          
+  80          
+  81          
+  82          
+  83          
+  84          
+  85          
+  86          
+  87          
+  88          
+  89          
+  90          
+  91          
+  92          
+  93          
+  94          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    100    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

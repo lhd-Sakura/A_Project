@@ -1,0 +1,120 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.28.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=JL2Z9-4QB2L-3MJ9Q-NE9E3-FH8ES-BA8Y1
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.28.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.28.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.6.0
+Dialog DLL:      TCM.DLL V1.36.2.0
+ 
+<h2>Project:</h2>
+E:\MCU\A_Project\STM32CubeMX\RFID\MDK-ARM\RFID.uvprojx
+Project File Date:  12/10/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'RFID'
+compiling 74HC595.c...
+..\BSP\TM1637.h(17): error:  #20: identifier "u16" is undefined
+  void LED_OUT(u16 X);		// LED单字节串行移位函数
+..\BSP\TM1637.h(18): error:  #20: identifier "u32" is undefined
+  void Seconds(u32 *count);	// 向上计数
+..\BSP\TM1637.h(19): error:  #20: identifier "u16" is undefined
+  void SetNum(u16 x);			// 设置四位初始数字
+..\BSP\user_system.h(27): warning:  #1295-D: Deprecated declaration user_system_init - give arg types
+  void user_system_init();
+..\BSP\user_system.h(28): warning:  #1295-D: Deprecated declaration user_system_thread_0 - give arg types
+  void user_system_thread_0();
+..\BSP\74HC595.c(26): warning:  #223-D: function "RCC_APB2PeriphClockCmd" declared implicitly
+  	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);	 
+..\BSP\74HC595.c(26): error:  #20: identifier "RCC_APB2Periph_GPIOC" is undefined
+  	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);	 
+..\BSP\74HC595.c(28): error:  #136: struct "<unnamed>"  has no field "GPIO_PIN"
+  	GPIO_InitStructure.GPIO_PIN = GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_0;				  
+..\BSP\74HC595.c(29): error:  #136: struct "<unnamed>"  has no field "GPIO_MODE"
+  	GPIO_InitStructure.GPIO_MODE = GPIO_MODE_Out_PP; 		  
+..\BSP\74HC595.c(29): error:  #20: identifier "GPIO_MODE_Out_PP" is undefined
+  	GPIO_InitStructure.GPIO_MODE = GPIO_MODE_Out_PP; 		  
+..\BSP\74HC595.c(30): error:  #136: struct "<unnamed>"  has no field "GPIO_Speed"
+  	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	 
+..\BSP\74HC595.c(30): error:  #20: identifier "GPIO_Speed_50MHz" is undefined
+  	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	 
+..\BSP\74HC595.c(31): warning:  #223-D: function "GPIO_Init" declared implicitly
+  	GPIO_Init(GPIOC, &GPIO_InitStructure);					  
+..\BSP\74HC595.c(45): warning:  #223-D: function "PCout" declared implicitly
+  	RCLK = 0;
+..\BSP\74HC595.c(45): error:  #137: expression must be a modifiable lvalue
+  	RCLK = 0;
+..\BSP\74HC595.c(46): error:  #137: expression must be a modifiable lvalue
+  	RCLK = 1;
+..\BSP\74HC595.c(54): error:  #137: expression must be a modifiable lvalue
+  	RCLK = 0;
+..\BSP\74HC595.c(55): error:  #137: expression must be a modifiable lvalue
+  	RCLK = 1;
+..\BSP\74HC595.c(63): error:  #137: expression must be a modifiable lvalue
+  	RCLK = 0;
+..\BSP\74HC595.c(64): error:  #137: expression must be a modifiable lvalue
+  	RCLK = 1;
+..\BSP\74HC595.c(72): error:  #137: expression must be a modifiable lvalue
+  	RCLK = 0;
+..\BSP\74HC595.c(73): error:  #137: expression must be a modifiable lvalue
+  	RCLK = 1;
+..\BSP\74HC595.c(82): warning:  #223-D: function "PCout" declared implicitly
+  			DIO=1; 
+..\BSP\74HC595.c(82): error:  #137: expression must be a modifiable lvalue
+  			DIO=1; 
+..\BSP\74HC595.c(84): warning:  #223-D: function "PCout" declared implicitly
+  			DIO=0;
+..\BSP\74HC595.c(84): error:  #137: expression must be a modifiable lvalue
+  			DIO=0;
+..\BSP\74HC595.c(86): warning:  #223-D: function "PCout" declared implicitly
+  		SCLK = 0;
+..\BSP\74HC595.c(86): error:  #137: expression must be a modifiable lvalue
+  		SCLK = 0;
+..\BSP\74HC595.c(87): error:  #137: expression must be a modifiable lvalue
+  		SCLK = 1;
+..\BSP\74HC595.c(118): warning:  #223-D: function "delay_us" declared implicitly
+  	delay_us(50);
+..\BSP\74HC595.c: 9 warnings, 21 errors
+compiling main.c...
+"RFID\RFID.axf" - 21 Error(s), 9 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.5.1.pack
+                ARM.CMSIS.5.5.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.2.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_RFID
+  C:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include
+  C:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.2.0
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\delay.obj",
+".\Objects\main.obj" 
+TO ".\Objects\FOUR_NIXIE" 
+PRINT(".\Listings\FOUR_NIXIE.m51")

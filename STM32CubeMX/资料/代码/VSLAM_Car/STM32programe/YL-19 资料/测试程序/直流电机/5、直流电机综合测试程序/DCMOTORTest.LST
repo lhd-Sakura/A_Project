@@ -1,0 +1,180 @@
+C51 COMPILER V7.06   DCMOTORTEST                                                           05/01/2011 08:52:26 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE DCMOTORTEST
+OBJECT MODULE PLACED IN DCMOTORTest.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE DCMOTORTest.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*********************************************************************************************************
+             -****
+   2          *                                                                                               测试说明
+   3          *1、MCU:STC89C52RC
+   4          *2、测试频率:12Mhz
+   5          *2、编程语言:C51
+   6          *2、编译环境:Keil C
+   7          *2、功能:全速正转、全速反转、停止、调速运行
+   8          **********************************************************************************************************
+             -***/
+   9          
+  10          #include <reg52.h>
+  11          
+  12          //LMD298输入控制端定义
+  13          sbit IN1 = P1^0;
+  14          sbit IN2 = P1^1;        
+  15          sbit IN3 = P1^2;        
+  16          sbit IN4 = P1^3;
+  17          
+  18          sbit ENA = P1^4;        
+  19          sbit ENB = P1^5;
+  20          
+  21          sbit CW = P3^0;         //正转运行按键
+  22          sbit STOP = P3^1;       //停止运行按键
+  23          sbit CCW = P3^2;        //反转运行按键
+  24          sbit ADJ = P3^3;        //调速运行按键
+  25          
+  26          bit Run_Status;         //运行状态位标志，
+  27                                                  //=0表示电机在停止状态，可以按键正转、反转均可
+  28                                                  //=1表示电机在运行状态，不支持正反转按键，只有先停止。防止强行换向带来的电流过大。
+  29          
+  30          unsigned char CYCLE; //周期变量
+  31          unsigned char DUTY; //占空比变量,对应于调速运行时按键次数，调速时每按一次调速键速度比上次变化10%
+  32          
+  33          /********************************/
+  34          /*      延时函数               */
+  35          /********************************/
+  36          void Delay(unsigned int cnt)
+  37          {
+  38   1              while(--cnt);
+  39   1      }
+  40          /********************************/
+  41          /*      主函数                       */
+  42          /********************************/
+  43          main()
+  44          {
+  45   1              TMOD |=0x01;    //定时器设置 1ms in 12M crystal
+  46   1              TH0=(65536-1000)/256; 
+  47   1              TL0=(65536-1000)%256;//定时1mS 
+  48   1              IE= 0x82;               //打开中断      
+  49   1              
+  50   1              Run_Status=0;
+  51   1              IN1=1;
+  52   1              IN2=1;
+  53   1              IN3=1;
+C51 COMPILER V7.06   DCMOTORTEST                                                           05/01/2011 08:52:26 PAGE 2   
+
+  54   1              IN4=1;
+  55   1              ENA=0;
+  56   1              ENB=0;
+  57   1      
+  58   1              CYCLE=10;       //周期10ms
+  59   1              DUTY=0;         //占空比=0
+  60   1      
+  61   1              while(1)
+  62   1              {
+  63   2                      if(!STOP)                       //任何时候按停止键，电机停止运行
+  64   2                      {       
+  65   3                              Delay(12000);   //延时去抖动
+  66   3                              if(!STOP)                       
+  67   3                              {               
+  68   4                                      //实际运用中，自由停车或制动刹车可以任选。
+  69   4                                      Run_Status=0;   //电机正在停止的状态标志
+  70   4                                      IN1=1;                  //IN1=IN2时，电机1制动刹车
+  71   4                                      IN2=1;                  
+  72   4                                      ENA=0;                  //ENA=0时，电机1自由运行到停止
+  73   4                                      IN3=1;                  //IN3=IN4时，电机2制动刹车
+  74   4                                      IN4=1;                  
+  75   4                                      ENB=0;                  //ENB=0时，电机2自由运行到停止
+  76   4                                      TR0=0;
+  77   4                              }
+  78   3                      }
+  79   2                      if(!CW&&!Run_Status)//按正转键同时电机不是正在运行时，电机正转运行
+  80   2                      {
+  81   3                              Delay(12000);   //延时去抖动
+  82   3                              if(!CW&&!Run_Status)                    
+  83   3                              {       
+  84   4                                      Run_Status=1;   //电机正在运行的状态标志
+  85   4                                      IN1=1;                  
+  86   4                                      IN2=0;                  
+  87   4                                      ENA=1;  
+  88   4                                      IN3=1;                  
+  89   4                                      IN4=0;                  
+  90   4                                      ENB=1;  
+  91   4                              }
+  92   3                      }
+  93   2                      if(!CCW&&!Run_Status)//按反转键同时电机不是正在运行时，电机反转运行
+  94   2                      {
+  95   3                              Delay(12000);   //延时去抖动
+  96   3                              if(!CCW&&!Run_Status)                   
+  97   3                              {       
+  98   4                                      Run_Status=1;   //电机正在运行的状态标志
+  99   4                                      IN1=0;                  
+ 100   4                                      IN2=1;                  
+ 101   4                                      ENA=1;  
+ 102   4                                      IN3=0;                  
+ 103   4                                      IN4=1;                  
+ 104   4                                      ENB=1;  
+ 105   4                              }
+ 106   3                      }
+ 107   2                      if(!ADJ)
+ 108   2                      {
+ 109   3                              Delay(15000);   //延时去抖动
+ 110   3                              if(!ADJ)
+ 111   3                              {       
+ 112   4                                      TR0=1;
+ 113   4                                      if(DUTY<CYCLE)  DUTY+=1;        //增加占空比
+ 114   4                                      else                    DUTY=0;
+ 115   4                                      Run_Status=1;
+C51 COMPILER V7.06   DCMOTORTEST                                                           05/01/2011 08:52:26 PAGE 3   
+
+ 116   4                                      //这里是正转调速，反转调速可以自己试着编写
+ 117   4                                      IN1=1;                  
+ 118   4                                      IN2=0;                  
+ 119   4                                      ENA=0;  
+ 120   4                                      IN3=1;                  
+ 121   4                                      IN4=0;                  
+ 122   4                                      ENB=0;  
+ 123   4                              }
+ 124   3                      }
+ 125   2         }
+ 126   1      }
+ 127          /********************************/
+ 128          /*      定时器0中断服务函数     */
+ 129          /********************************/
+ 130          void Timer0(void) interrupt 1 using 1
+ 131          {
+ 132   1              static unsigned char Cnt;
+ 133   1      
+ 134   1              TH0=(65536-1000)/256; 
+ 135   1              TL0=(65536-1000)%256;//定时1mS 
+ 136   1              
+ 137   1              if(DUTY==0)                             {Cnt=0; TR0=0;Run_Status=0;}    //占空比=0时 停止中断 可以按正转或反转
+ 138   1              else if(DUTY==CYCLE)    Cnt=CYCLE;
+ 139   1              else                                    Cnt++;
+ 140   1              if(Cnt==DUTY)           //高电平时间到
+ 141   1              {
+ 142   2                      ENA = 0; 
+ 143   2                      ENB = 0; 
+ 144   2              }
+ 145   1              if(Cnt == CYCLE)        //低电平时间到
+ 146   1              {
+ 147   2                      ENA = 1; 
+ 148   2                      ENB = 1; 
+ 149   2                  Cnt=0;
+ 150   2              }
+ 151   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    235    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

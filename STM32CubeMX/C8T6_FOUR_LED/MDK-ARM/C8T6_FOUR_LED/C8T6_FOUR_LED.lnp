@@ -1,0 +1,25 @@
+--cpu Cortex-M3
+"c8t6_four_led\startup_stm32f103xb.o"
+"c8t6_four_led\main.o"
+"c8t6_four_led\gpio.o"
+"c8t6_four_led\stm32f1xx_it.o"
+"c8t6_four_led\stm32f1xx_hal_msp.o"
+"c8t6_four_led\stm32f1xx_hal_gpio_ex.o"
+"c8t6_four_led\stm32f1xx_hal_tim.o"
+"c8t6_four_led\stm32f1xx_hal_tim_ex.o"
+"c8t6_four_led\stm32f1xx_hal.o"
+"c8t6_four_led\stm32f1xx_hal_rcc.o"
+"c8t6_four_led\stm32f1xx_hal_rcc_ex.o"
+"c8t6_four_led\stm32f1xx_hal_gpio.o"
+"c8t6_four_led\stm32f1xx_hal_dma.o"
+"c8t6_four_led\stm32f1xx_hal_cortex.o"
+"c8t6_four_led\stm32f1xx_hal_pwr.o"
+"c8t6_four_led\stm32f1xx_hal_flash.o"
+"c8t6_four_led\stm32f1xx_hal_flash_ex.o"
+"c8t6_four_led\stm32f1xx_hal_exti.o"
+"c8t6_four_led\system_stm32f1xx.o"
+"c8t6_four_led\bsp_fled.o"
+--library_type=microlib --strict --scatter "C8T6_FOUR_LED\C8T6_FOUR_LED.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "C8T6_FOUR_LED.map" -o C8T6_FOUR_LED\C8T6_FOUR_LED.axf
