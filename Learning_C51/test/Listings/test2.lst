@@ -1,0 +1,51 @@
+C51 COMPILER V9.54   TEST2                                                                 10/16/2020 14:40:51 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TEST2
+OBJECT MODULE PLACED IN .\Objects\test2.obj
+COMPILER INVOKED BY: E:\Keil_v5\C51\BIN\C51.EXE test2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\tes
+                    -t2.lst) TABS(2) OBJECT(.\Objects\test2.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          #define uint unsigned int
+   4          #define uchar unsigned char 
+   5          void delay (uint t)
+   6            {
+   7   1          uint i,j;
+   8   1          for(i=0;i<t;i++)
+   9   1          for(j=0;j<120;j++);
+  10   1        }
+  11            
+  12            
+  13            
+  14            void main()
+  15            {
+  16   1          uchar k;
+  17   1          k=0xfe;
+  18   1          
+  19   1          P1=0x00;
+  20   1            delay(100);
+  21   1          
+  22   1          while(1){
+  23   2            P1=k;
+  24   2            delay(100);
+  25   2            k=_crol_(k,1);
+  26   2          }
+  27   1        }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     66    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

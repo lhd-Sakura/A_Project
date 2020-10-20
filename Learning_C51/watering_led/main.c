@@ -13,13 +13,9 @@ void main()
             delay_ms(200);
             /* code */
         }
-        
-
-        /* code */
+       
     }
     
-
-
 }
 
 

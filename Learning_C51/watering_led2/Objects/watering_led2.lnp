@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\watering_led2" 
+PRINT(".\Listings\watering_led2.m51")
